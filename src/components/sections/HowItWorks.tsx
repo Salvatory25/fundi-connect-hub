@@ -1,46 +1,49 @@
 import { Search, UserCheck, MessageSquare, ThumbsUp } from "lucide-react";
-
-const steps = [
-  {
-    icon: Search,
-    number: "01",
-    title: "Search for Service",
-    description: "Tell us what you need - electrical, plumbing, ICT, or any technical service.",
-  },
-  {
-    icon: UserCheck,
-    number: "02",
-    title: "Choose a Technician",
-    description: "Browse verified profiles, read reviews, and select the best match for your needs.",
-  },
-  {
-    icon: MessageSquare,
-    number: "03",
-    title: "Communicate & Schedule",
-    description: "Chat directly with your technician to discuss details and book a convenient time.",
-  },
-  {
-    icon: ThumbsUp,
-    number: "04",
-    title: "Get Quality Service",
-    description: "Receive professional service and rate your experience to help others.",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HowItWorks = () => {
+  const { t } = useLanguage();
+
+  const steps = [
+    {
+      icon: Search,
+      number: "01",
+      titleKey: "step1.title",
+      descKey: "step1.desc",
+    },
+    {
+      icon: UserCheck,
+      number: "02",
+      titleKey: "step2.title",
+      descKey: "step2.desc",
+    },
+    {
+      icon: MessageSquare,
+      number: "03",
+      titleKey: "step3.title",
+      descKey: "step3.desc",
+    },
+    {
+      icon: ThumbsUp,
+      number: "04",
+      titleKey: "step4.title",
+      descKey: "step4.desc",
+    },
+  ];
+
   return (
     <section id="how-it-works" className="py-16 md:py-24">
       <div className="container mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <span className="inline-block px-4 py-1.5 bg-secondary/10 text-secondary text-sm font-medium rounded-full mb-4">
-            How It Works
+            {t("howItWorks.badge")}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Get Help in 4 Simple Steps
+            {t("howItWorks.title")}
           </h2>
           <p className="text-lg text-muted-foreground">
-            Finding reliable technical help has never been easier
+            {t("howItWorks.subtitle")}
           </p>
         </div>
 
@@ -66,10 +69,10 @@ const HowItWorks = () => {
 
                 {/* Content */}
                 <h3 className="text-xl font-semibold text-foreground mb-2">
-                  {step.title}
+                  {t(step.titleKey)}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  {step.description}
+                  {t(step.descKey)}
                 </p>
               </div>
             ))}

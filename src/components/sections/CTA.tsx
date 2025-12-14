@@ -1,7 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Wrench, Users } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CTA = () => {
+  const { t } = useLanguage();
+
+  const clientFeatures = [
+    t("cta.client.feature1"),
+    t("cta.client.feature2"),
+    t("cta.client.feature3"),
+    t("cta.client.feature4"),
+  ];
+
+  const technicianFeatures = [
+    t("cta.technician.feature1"),
+    t("cta.technician.feature2"),
+    t("cta.technician.feature3"),
+    t("cta.technician.feature4"),
+  ];
+
   return (
     <section id="about" className="py-16 md:py-24">
       <div className="container mx-auto">
@@ -12,19 +29,13 @@ const CTA = () => {
               <Users className="w-7 h-7 text-primary" />
             </div>
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Need a Technician?
+              {t("cta.client.title")}
             </h3>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Find verified professionals for any technical service. Browse profiles, 
-              compare ratings, and book the right expert for your needs — all in one place.
+              {t("cta.client.desc")}
             </p>
             <ul className="space-y-3 mb-8">
-              {[
-                "Verified & trusted technicians",
-                "Location-based search",
-                "Direct communication",
-                "Review & rating system",
-              ].map((item) => (
+              {clientFeatures.map((item) => (
                 <li key={item} className="flex items-center gap-3 text-muted-foreground">
                   <span className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
                     <span className="w-2 h-2 rounded-full bg-primary" />
@@ -34,7 +45,7 @@ const CTA = () => {
               ))}
             </ul>
             <Button variant="hero" size="lg">
-              Find Technicians
+              {t("cta.client.button")}
               <ArrowRight className="w-4 h-4" />
             </Button>
           </div>
@@ -45,19 +56,13 @@ const CTA = () => {
               <Wrench className="w-7 h-7 text-secondary" />
             </div>
             <h3 className="text-2xl md:text-3xl font-bold text-background mb-4">
-              Are You a Technician?
+              {t("cta.technician.title")}
             </h3>
             <p className="text-background/70 mb-6 leading-relaxed">
-              Join Tanzania's fastest-growing platform for technical professionals. 
-              Showcase your skills, connect with clients, and grow your business digitally.
+              {t("cta.technician.desc")}
             </p>
             <ul className="space-y-3 mb-8">
-              {[
-                "Free registration",
-                "Direct job requests",
-                "Build your reputation",
-                "Expand your reach",
-              ].map((item) => (
+              {technicianFeatures.map((item) => (
                 <li key={item} className="flex items-center gap-3 text-background/70">
                   <span className="w-5 h-5 rounded-full bg-secondary/20 flex items-center justify-center">
                     <span className="w-2 h-2 rounded-full bg-secondary" />
@@ -67,7 +72,7 @@ const CTA = () => {
               ))}
             </ul>
             <Button variant="warm" size="lg">
-              Register as Technician
+              {t("cta.technician.button")}
               <ArrowRight className="w-4 h-4" />
             </Button>
           </div>

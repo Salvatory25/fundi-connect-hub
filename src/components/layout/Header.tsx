@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Wrench } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const navLinks = [
-    { href: "#services", label: "Services" },
-    { href: "#how-it-works", label: "How It Works" },
-    { href: "#technicians", label: "Technicians" },
-    { href: "#about", label: "About" },
+    { href: "#services", label: t("nav.services") },
+    { href: "#how-it-works", label: t("nav.howItWorks") },
+    { href: "#technicians", label: t("nav.technicians") },
+    { href: "#about", label: t("nav.about") },
   ];
 
   return (
@@ -41,22 +44,26 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
+            <LanguageSwitcher />
             <Button variant="ghost" size="sm">
-              Login
+              {t("nav.login")}
             </Button>
             <Button variant="default" size="sm">
-              Get Started
+              {t("nav.getStarted")}
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-foreground"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="flex md:hidden items-center gap-2">
+            <LanguageSwitcher />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 text-foreground"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -75,10 +82,10 @@ const Header = () => {
               ))}
               <div className="flex flex-col gap-2 mt-4 px-4">
                 <Button variant="outline" className="w-full">
-                  Login
+                  {t("nav.login")}
                 </Button>
                 <Button variant="default" className="w-full">
-                  Get Started
+                  {t("nav.getStarted")}
                 </Button>
               </div>
             </nav>

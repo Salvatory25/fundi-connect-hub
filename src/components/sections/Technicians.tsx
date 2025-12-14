@@ -1,5 +1,6 @@
 import { Star, MapPin, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const technicians = [
   {
@@ -45,6 +46,8 @@ const technicians = [
 ];
 
 const Technicians = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="technicians" className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto">
@@ -52,17 +55,17 @@ const Technicians = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 md:mb-16">
           <div>
             <span className="inline-block px-4 py-1.5 bg-accent text-accent-foreground text-sm font-medium rounded-full mb-4">
-              Top Rated
+              {t("technicians.badge")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-              Featured Technicians
+              {t("technicians.title")}
             </h2>
             <p className="text-lg text-muted-foreground">
-              Meet some of our highest-rated professionals
+              {t("technicians.subtitle")}
             </p>
           </div>
           <Button variant="outline" className="self-start md:self-auto">
-            View All Technicians
+            {t("technicians.viewAll")}
             <ArrowRight className="w-4 h-4 ml-1" />
           </Button>
         </div>
@@ -122,7 +125,7 @@ const Technicians = () => {
 
               {/* CTA */}
               <Button variant="outline" size="sm" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                View Profile
+                {t("technicians.viewProfile")}
               </Button>
             </div>
           ))}
