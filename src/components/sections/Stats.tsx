@@ -1,11 +1,15 @@
-const stats = [
-  { value: "10,000+", label: "Happy Customers" },
-  { value: "5,000+", label: "Verified Technicians" },
-  { value: "25,000+", label: "Jobs Completed" },
-  { value: "50+", label: "Service Categories" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Stats = () => {
+  const { t } = useLanguage();
+
+  const stats = [
+    { value: "10,000+", labelKey: "stats.customers" },
+    { value: "5,000+", labelKey: "stats.technicians" },
+    { value: "25,000+", labelKey: "stats.jobs" },
+    { value: "50+", labelKey: "stats.categories" },
+  ];
+
   return (
     <section className="py-16 md:py-20 bg-hero-gradient relative overflow-hidden">
       {/* Background Pattern */}
@@ -18,7 +22,7 @@ const Stats = () => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {stats.map((stat, index) => (
             <div
-              key={stat.label}
+              key={stat.labelKey}
               className="text-center animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
@@ -26,7 +30,7 @@ const Stats = () => {
                 {stat.value}
               </p>
               <p className="text-primary-foreground/80 text-lg">
-                {stat.label}
+                {t(stat.labelKey)}
               </p>
             </div>
           ))}

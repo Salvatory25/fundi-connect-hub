@@ -1,26 +1,29 @@
 import { Wrench, Mail, Phone, MapPin } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   const footerLinks = {
     services: [
-      { label: "Electrical", href: "#" },
-      { label: "Plumbing", href: "#" },
-      { label: "ICT & Networking", href: "#" },
-      { label: "Carpentry", href: "#" },
-      { label: "HVAC", href: "#" },
+      { labelKey: "service.electrical", href: "#" },
+      { labelKey: "service.plumbing", href: "#" },
+      { labelKey: "service.ict", href: "#" },
+      { labelKey: "service.carpentry", href: "#" },
+      { labelKey: "service.hvac", href: "#" },
     ],
     company: [
-      { label: "About Us", href: "#" },
-      { label: "How It Works", href: "#how-it-works" },
-      { label: "Become a Technician", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "Contact", href: "#" },
+      { labelKey: "footer.aboutUs", href: "#" },
+      { labelKey: "footer.howItWorks", href: "#how-it-works" },
+      { labelKey: "footer.becomeTechnician", href: "#" },
+      { labelKey: "footer.careers", href: "#" },
+      { labelKey: "footer.contact", href: "#" },
     ],
     support: [
-      { label: "Help Center", href: "#" },
-      { label: "Safety", href: "#" },
-      { label: "Terms of Service", href: "#" },
-      { label: "Privacy Policy", href: "#" },
+      { labelKey: "footer.helpCenter", href: "#" },
+      { labelKey: "footer.safety", href: "#" },
+      { labelKey: "footer.terms", href: "#" },
+      { labelKey: "footer.privacy", href: "#" },
     ],
   };
 
@@ -39,7 +42,7 @@ const Footer = () => {
               </span>
             </a>
             <p className="text-background/60 mb-6 max-w-xs">
-              Connecting Tanzanians with trusted technicians for all technical service needs.
+              {t("footer.tagline")}
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm text-background/60">
@@ -59,15 +62,15 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold text-background mb-4">Services</h4>
+            <h4 className="font-semibold text-background mb-4">{t("footer.services")}</h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
-                <li key={link.label}>
+                <li key={link.labelKey}>
                   <a
                     href={link.href}
                     className="text-sm text-background/60 hover:text-primary transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </a>
                 </li>
               ))}
@@ -76,15 +79,15 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold text-background mb-4">Company</h4>
+            <h4 className="font-semibold text-background mb-4">{t("footer.company")}</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
-                <li key={link.label}>
+                <li key={link.labelKey}>
                   <a
                     href={link.href}
                     className="text-sm text-background/60 hover:text-primary transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </a>
                 </li>
               ))}
@@ -93,15 +96,15 @@ const Footer = () => {
 
           {/* Support */}
           <div>
-            <h4 className="font-semibold text-background mb-4">Support</h4>
+            <h4 className="font-semibold text-background mb-4">{t("footer.support")}</h4>
             <ul className="space-y-3">
               {footerLinks.support.map((link) => (
-                <li key={link.label}>
+                <li key={link.labelKey}>
                   <a
                     href={link.href}
                     className="text-sm text-background/60 hover:text-primary transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </a>
                 </li>
               ))}
@@ -112,10 +115,10 @@ const Footer = () => {
         {/* Bottom */}
         <div className="mt-12 pt-8 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-background/50">
-            © 2025 Fundi Connect. All rights reserved.
+            © 2025 Fundi Connect. {t("footer.rights")}
           </p>
           <p className="text-sm text-background/50">
-            Made with ❤️ in Tanzania
+            {t("footer.madeWith")}
           </p>
         </div>
       </div>
